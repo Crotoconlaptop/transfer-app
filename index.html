@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transfer Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Agrega la biblioteca xlsx -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <h1>Transfer Form</h1>
+    <div id="items-container">
+      <h2>List of Items</h2>
+      <ul id="item-list">
+        <!-- Aquí se agregarán dinámicamente los items -->
+      </ul>
+    </div>
+    <div id="transfer-form">
+      <h2>Transfer Item</h2>
+      <label for="select-item">Select an Item:</label>
+      <select id="select-item"></select>
+      <label for="select-from">From Outlet:</label>
+      <select id="select-from"></select>
+      <label for="select-to">To Outlet:</label>
+      <select id="select-to"></select>
+      <!-- Nuevo campo para la cantidad -->
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1">
+      <!-- Nuevo campo para la unidad -->
+      <label for="unit">Unit:</label>
+      <select id="unit">
+        <option value="quantity">Quantity</option>
+        <option value="kg">Amount (kg)</option>
+      </select>
+      <!-- Nuevo contenedor para mostrar la hora -->
+      <div id="timestamp-container">
+        <label for="timestamp">Transfer Time:</label>
+        <span id="timestamp"></span>
+      </div>
+      <!-- Botones de transferencia y exportación a Excel -->
+      <button onclick="transferItem()">Transfer</button>
+      <button id="export-button">Export to Excel</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
