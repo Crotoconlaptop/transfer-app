@@ -46,23 +46,24 @@ function loadBarras() {
 }
 
 // Función para realizar la transferencia
-// Modificar la función transferItem para agregar timestamp
 function transferItem() {
   const selectItem = document.getElementById('select-item');
   const selectFrom = document.getElementById('select-from');
   const selectTo = document.getElementById('select-to');
   const inputQuantity = document.getElementById('quantity');
   const selectUnit = document.getElementById('unit');
+  const inputTransfererName = document.getElementById('transferer-name'); // Nuevo campo
 
   const selectedItem = selectItem.value;
   const selectedFrom = selectFrom.value;
   const selectedTo = selectTo.value;
   const quantity = parseFloat(inputQuantity.value) || 1;
   const unit = selectUnit.value;
+  const transfererName = inputTransfererName.value; // Nuevo campo
 
-  // Validar que se haya seleccionado un item y la cantidad sea válida
-  if (!selectedItem || isNaN(quantity) || quantity <= 0) {
-    alert('Por favor selecciona un item y especifica una cantidad válida.');
+  // Validar que se haya seleccionado un item, la cantidad sea válida y se haya ingresado un nombre
+  if (!selectedItem || isNaN(quantity) || quantity <= 0 || !transfererName) {
+    alert('Por favor completa todos los campos correctamente.');
     return;
   }
 
@@ -71,7 +72,7 @@ function transferItem() {
 
   // Buscar si ya existe una transferencia del mismo item a la misma barra
   const existingTransfer = transferencias.find(
-    t => t.item === selectedItem && t.from === selectedFrom && t.to === selectedTo && t.unit === unit
+    t => t.item === selectedItem && t.from === selectedFrom && t.to === selectedTo && t.unit === unit && t.transfererName === transfererName
   );
 
   // Si existe, incrementar la cantidad
@@ -86,6 +87,7 @@ function transferItem() {
       quantity: quantity,
       unit: unit,
       timestamp: timestamp,
+      transfererName: transfererName, // Nuevo campo
     };
 
     // Agregar transferencia al array
@@ -97,6 +99,7 @@ function transferItem() {
   selectFrom.value = '';
   selectTo.value = '';
   inputQuantity.value = '';
+  inputTransfererName.value = ''; // Nuevo campo
 
   // Actualizar la lista de transferencias
   updateTransferList();
@@ -110,7 +113,7 @@ function updateTransferList() {
 
   transferencias.forEach(transferencia => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${transferencia.item} - De ${transferencia.from} a ${transferencia.to} - ${transferencia.quantity || 1} ${transferencia.unit || 'Cantidad'} - Time: ${transferencia.timestamp.toLocaleString()}`;
+    listItem.textContent = `${transferencia.item} - De ${transferencia.from} a ${transferencia.to} - ${transferencia.quantity || 1} ${transferencia.unit || 'Cantidad'} - Time: ${transferencia.timestamp.toLocaleString()} - Transferer: ${transferencia.transfererName || 'Anónimo'}`;
     itemList.appendChild(listItem);
   });
 }
@@ -140,7 +143,8 @@ function exportToExcel() {
     To: t.to,
     Quantity: t.quantity,
     Unit: t.unit,
-    Timestamp: t.timestamp,  // Incluir la hora en la hoja de cálculo
+    Timestamp: t.timestamp,
+    HostName: t.transfererName || 'Anónimo', // Incluir el nombre del transferente
   }));
 
   const wb = XLSX.utils.book_new();

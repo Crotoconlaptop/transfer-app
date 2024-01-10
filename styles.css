@@ -2,21 +2,24 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: #1a1a1a; /* Fondo oscuro */
-  color: #ffcc00; /* Texto amarillo */
+  background: #222; /* Fondo negro */
+  color: #ccc; /* Texto gris claro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .app-container {
-  max-width: 100%;
-  margin: 20px;
+  width: 80%;
   background: #333; /* Gris oscuro */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Sutil sombra */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sutil sombra */
 }
 
 h1, h2 {
-  color: #00ff00; /* Amarillo */
+  color: #e1c699; /* Dorado claro */
 }
 
 #items-container, #transfer-form {
@@ -26,7 +29,7 @@ h1, h2 {
 ul {
   list-style: none;
   padding: 0;
-  color: #ff6666; /* Rojo */
+  color: greenyellow; /* Gris medio */
 }
 
 li {
@@ -36,12 +39,12 @@ li {
 label, select, button {
   display: block;
   margin-bottom: 10px;
-  color: #ff9966; /* Naranja */
+  color: #ddd; /* Gris claro */
 }
 
 button, #export-button {
-  background: #ff5050; /* Rojo más oscuro */
-  color: #fff; /* Blanco */
+  background: #cf5c36; /* Rojo rojizo */
+  color: #fff; /* Texto blanco */
   padding: 10px;
   border: none;
   border-radius: 4px;
@@ -49,16 +52,18 @@ button, #export-button {
 }
 
 button:hover, #export-button:hover {
-  background: #e60000; /* Rojo más oscuro */
+  background: #a74a2e; /* Rojo oscuro */
 }
 
 select, input {
-  background: black; /* Azul claro */
-  color: #ffcc00; /* Amarillo */
+  background: #444; /* Gris oscuro */
+  color: #ccc; /* Texto gris claro */
   padding: 8px;
-  border: none;
+  border: 1px solid #666; /* Borde gris */
   border-radius: 4px;
 }
+
+
 
 
 
