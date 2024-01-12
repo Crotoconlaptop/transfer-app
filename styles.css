@@ -5,9 +5,10 @@ body {
   background: #222; /* Fondo negro */
   color: #ccc; /* Texto gris claro */
   display: flex;
+  flex-direction: column; /* Ajuste necesario para que el footer quede abajo */
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh; /* Cambié height a min-height para asegurarnos de que la página ocupe al menos toda la altura de la ventana */
 }
 
 .app-container {
@@ -62,6 +63,17 @@ select, input {
   border: 1px solid #666; /* Borde gris */
   border-radius: 4px;
 }
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: #262626;
+  font-weight: 300;
+  margin-top: auto; /* Esto coloca el pie de página al final de la página */
+}
+
+
 
 
 
