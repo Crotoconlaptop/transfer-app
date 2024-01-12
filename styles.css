@@ -65,12 +65,14 @@ select, input {
 }
 
 .copyright {
+  color: #555; /* Gris más oscuro */
   width: 100%;
   text-align: center;
   padding: 25px 0;
-  background: #262626;
   font-weight: 300;
-  margin-top: auto; /* Esto coloca el pie de página al final de la página */
+  font-size: 10px;
+  margin-top: 30px;
+  bottom: 0;
 }
 
 
